@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        p{
+            
+           text-align: center;
+            size: 80px;
+            font-family: "bold";
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitcoin Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Close</th>
+                <th>Edit Count</th>
+                
+                <th>Tomorrow's Close</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for _, row in dataframe.iterrows() %}
+            <tr>
+                <td>{{ row.name.strftime("%Y-%m-%d") }}</td>
+                <td>{{ row['close'] }}</td>
+                <td>{{ row['edit_count'] }}</td>
+               
+                <td>{{ row['tomorrow'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p style="size-adjust: 100px;">{{ price_statement }}</p>
+</body>
+</html>
+
